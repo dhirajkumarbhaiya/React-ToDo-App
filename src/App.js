@@ -19,6 +19,24 @@ function App() {
   const [newToDoItem, setNewToDoItem] = useState("");
   const [updateItem, setUpdateItem] = useState("");
 
+  // Function to add ToDo
+  const addTodo = () => {};
+
+  // Function to delete ToDo
+  const deleteTodo = (id) => {};
+
+  // Function to mark ToDo item as done
+  const markDone = () => {};
+
+  // Function to cancel update
+  const cancelUpdate = () => {};
+
+  // Function to change item for update
+  const changeItem = () => {};
+
+  // Function to Update ToDo Item
+  const updateTodo = () => {};
+
   return (
     <div className="App  ">
       <h1>React ToDo App</h1>
