@@ -40,6 +40,24 @@ function App() {
   return (
     <div className="App  ">
       <h1>React ToDo App</h1>
+
+      {/* Displaying ToDos */}
+
+      {toDos && toDos.length ? "" : "Nothing to show, Please add some items..."}
+
+      {toDos &&
+        toDos.map((task, index) => {
+          return (
+            <React.Fragment key={task.id}>
+              <div className="col taskBg">
+                <div className={task.status ? "done" : ""}>
+                  <span>{index + 1}</span>
+                  <span>{task.title}</span>
+                </div>
+              </div>
+            </React.Fragment>
+          );
+        })}
     </div>
   );
 }
