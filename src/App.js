@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,9 +9,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
+  // State for storing ToDo items
+  const [toDos, setToDos] = useState([
+    { id: 1, title: "task 1", status: false },
+    { id: 2, title: "task 2", status: false },
+  ]);
+
+  //  Temporary States for creating and updating ToDo Items
+  const [newToDoItem, setNewToDoItem] = useState("");
+  const [updateItem, setUpdateItem] = useState("");
+
   return (
-    <div className="App container bg-dark text-light">
-      <p>app goes here</p>
+    <div className="App  ">
+      <h1>React ToDo App</h1>
     </div>
   );
 }
