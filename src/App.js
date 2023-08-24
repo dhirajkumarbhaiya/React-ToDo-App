@@ -41,6 +41,33 @@ function App() {
     <div className="App  ">
       <h1>React ToDo App</h1>
       <div className="container m-5">
+        {/* Input form for Updating existing ToDo entries */}
+        <div className="row mb-4">
+          <div className="col">
+            <input type="text" className="form-control" />
+          </div>
+          <div className="col-auto">
+            <button className=" btn btn-success">Update</button>
+          </div>
+          <div className="col-auto">
+            <button className=" btn btn-danger">Cancel</button>
+          </div>
+        </div>
+
+        {/* Input form for new ToDo entries */}
+        <div className="row mb-4">
+          <div className="col">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter your task here..."
+            />
+          </div>
+          <div className="col-auto">
+            <button className=" btn btn-success">Add Item</button>
+          </div>
+        </div>
+
         {/* Displaying ToDos */}
 
         {toDos && toDos.length
@@ -59,7 +86,7 @@ function App() {
                       <span className="taskText">{task.title}</span>
                     </div>
                     <div className="iconWraper">
-                      <span title="Mark as done/not done">
+                      <span title="Mark as done / not done">
                         <FontAwesomeIcon icon={faCircleCheck} />
                       </span>
                       <span title="Edit">
