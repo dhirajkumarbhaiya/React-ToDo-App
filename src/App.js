@@ -40,24 +40,38 @@ function App() {
   return (
     <div className="App  ">
       <h1>React ToDo App</h1>
+      <div className="container m-5">
+        {/* Displaying ToDos */}
 
-      {/* Displaying ToDos */}
+        {toDos && toDos.length
+          ? ""
+          : "Nothing to show, Please add some items..."}
 
-      {toDos && toDos.length ? "" : "Nothing to show, Please add some items..."}
-
-      {toDos &&
-        toDos.map((task, index) => {
-          return (
-            <React.Fragment key={task.id}>
-              <div className="col taskBg">
-                <div className={task.status ? "done" : ""}>
-                  <span className="taskNumber">{index + 1}</span>
-                  <span className="taskText">{task.title}</span>
+        {toDos &&
+          toDos.map((task, index) => {
+            return (
+              <React.Fragment key={task.id}>
+                <div className="col taskBg">
+                  <div className={task.status ? "done" : ""}>
+                    <span className="taskNumber">{index + 1}</span>
+                    <span className="taskText">{task.title}</span>
+                  </div>
+                  <div className="">
+                    <span>
+                      <FontAwesomeIcon icon={faCircleCheck} />
+                    </span>
+                    <span>
+                      <FontAwesomeIcon icon={faPen} />
+                    </span>
+                    <span>
+                      <FontAwesomeIcon icon={faTrashCan} />
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </React.Fragment>
-          );
-        })}
+              </React.Fragment>
+            );
+          })}
+      </div>
     </div>
   );
 }
