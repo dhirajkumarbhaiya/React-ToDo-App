@@ -48,29 +48,31 @@ function App() {
           : "Nothing to show, Please add some items..."}
 
         {toDos &&
-          toDos.map((task, index) => {
-            return (
-              <React.Fragment key={task.id}>
-                <div className="col taskBg">
-                  <div className={task.status ? "done" : ""}>
-                    <span className="taskNumber">{index + 1}</span>
-                    <span className="taskText">{task.title}</span>
+          toDos
+            .sort((a, b) => (a.id > b.id ? 1 : -1))
+            .map((task, index) => {
+              return (
+                <React.Fragment key={task.id}>
+                  <div className="col taskBg">
+                    <div className={task.status ? "done" : ""}>
+                      <span className="taskNumber">{index + 1}</span>
+                      <span className="taskText">{task.title}</span>
+                    </div>
+                    <div className="iconWraper">
+                      <span title="Mark as done/not done">
+                        <FontAwesomeIcon icon={faCircleCheck} />
+                      </span>
+                      <span title="Edit">
+                        <FontAwesomeIcon icon={faPen} />
+                      </span>
+                      <span title="Delete">
+                        <FontAwesomeIcon icon={faTrashCan} />
+                      </span>
+                    </div>
                   </div>
-                  <div className="iconWraper">
-                    <span>
-                      <FontAwesomeIcon icon={faCircleCheck} />
-                    </span>
-                    <span>
-                      <FontAwesomeIcon icon={faPen} />
-                    </span>
-                    <span>
-                      <FontAwesomeIcon icon={faTrashCan} />
-                    </span>
-                  </div>
-                </div>
-              </React.Fragment>
-            );
-          })}
+                </React.Fragment>
+              );
+            })}
       </div>
     </div>
   );
