@@ -3,7 +3,7 @@
 }
 
 .taskBg {
-  background-color: #555;
+  background-color: #535151;
   margin-bottom: 20px;
   border-radius: 6px;
   padding: 10px 140px 10px 15px;
@@ -29,8 +29,26 @@
   align-items: center;
   justify-content: center;
 }
+.taskBg .taskText {
+  flex: 1;
+}
 .taskBg .done .taskText {
   text-decoration: line-through;
   opacity: 0.4;
-  flex: 1;
+}
+.iconWraper {
+  display: inline-block;
+  position: absolute;
+  width: auto;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.taskBg .iconWraper span {
+  margin: 0px 10px 0px 10px;
+  cursor: pointer;
+  color: rgba(72, 235, 69, 0.696);
+}
+.taskBg .iconWraper span:hover {
+  color: rgb(5, 252, 26);
 }

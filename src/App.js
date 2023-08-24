@@ -56,7 +56,7 @@ function App() {
                     <span className="taskNumber">{index + 1}</span>
                     <span className="taskText">{task.title}</span>
                   </div>
-                  <div className="">
+                  <div className="iconWraper">
                     <span>
                       <FontAwesomeIcon icon={faCircleCheck} />
                     </span>
