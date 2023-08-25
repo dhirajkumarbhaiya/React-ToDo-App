@@ -19,11 +19,21 @@ function App() {
   const [newToDoItem, setNewToDoItem] = useState("");
   const [updateItem, setUpdateItem] = useState("");
 
-  // Function to add ToDo
-  const addTodo = () => {};
+  // Function to add ToDo item
+  const addTodoItem = () => {
+    if (newToDoItem) {
+      let newId = toDos.length + 1;
+      let newTodoEntry = { id: newId, title: newToDoItem, status: false };
+      setToDos([...toDos, newTodoEntry]);
+      setNewToDoItem("");
+    }
+  };
 
-  // Function to delete ToDo
-  const deleteTodo = (id) => {};
+  // Function to delete ToDo item
+  const deleteTodoItem = (id) => {
+    let newTasks = toDos.filter((task) => task.id !== id);
+    setToDos(newTasks);
+  };
 
   // Function to mark ToDo item as done
   const markDone = () => {};
@@ -35,7 +45,7 @@ function App() {
   const changeItem = () => {};
 
   // Function to Update ToDo Item
-  const updateTodo = () => {};
+  const updateTodoItem = () => {};
 
   return (
     <div className="App  ">
@@ -59,12 +69,16 @@ function App() {
           <div className="col">
             <input
               type="text"
+              value={newToDoItem}
+              onChange={(e) => setNewToDoItem(e.target.value)}
               className="form-control"
               placeholder="Enter your task here..."
             />
           </div>
           <div className="col-auto">
-            <button className=" btn btn-success">Add Item</button>
+            <button onClick={addTodoItem} className=" btn btn-success">
+              Add Item
+            </button>
           </div>
         </div>
 
@@ -92,7 +106,10 @@ function App() {
                       <span title="Edit">
                         <FontAwesomeIcon icon={faPen} />
                       </span>
-                      <span title="Delete">
+                      <span
+                        title="Delete"
+                        onClick={() => deleteTodoItem(task.id)}
+                      >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </span>
                     </div>
