@@ -48,13 +48,27 @@ function App() {
   };
 
   // Function to cancel update
-  const cancelUpdate = () => {};
+  const cancelUpdate = () => {
+    setUpdateItem("");
+  };
 
   // Function to change item for update
-  const changeItem = () => {};
+  const changeItem = (e) => {
+    let newEntry = {
+      id: updateItem.id,
+      title: e.target.value,
+      status: updateItem.status ? true : false,
+    };
+    setUpdateItem(newEntry);
+  };
 
   // Function to Update ToDo Item
-  const updateTodoItem = () => {};
+  const updateTodoItem = () => {
+    let filteredTodos = [...toDos].filter((task) => task.id !== updateItem.id);
+    let updatedTodos = [...filteredTodos, updateItem];
+    setToDos(updatedTodos);
+    setUpdateItem("");
+  };
 
   return (
     <div className="App  ">
@@ -63,13 +77,25 @@ function App() {
         {/* Input form for Updating existing ToDo entries */}
         <div className="row mb-4">
           <div className="col">
-            <input type="text" className="form-control" />
+            <input
+              type="text"
+              className="form-control"
+              value={updateItem && updateItem.title}
+              onChange={(e) => changeItem(e)}
+            />
           </div>
           <div className="col-auto">
-            <button className=" btn btn-success">Update</button>
+            <button
+              onClick={() => updateTodoItem()}
+              className=" btn btn-success"
+            >
+              Update
+            </button>
           </div>
           <div className="col-auto">
-            <button className=" btn btn-danger">Cancel</button>
+            <button className=" btn btn-danger" onClick={() => cancelUpdate()}>
+              Cancel
+            </button>
           </div>
         </div>
 
@@ -115,9 +141,21 @@ function App() {
                       >
                         <FontAwesomeIcon icon={faCircleCheck} />
                       </span>
-                      <span title="Edit">
-                        <FontAwesomeIcon icon={faPen} />
-                      </span>
+                      {task.status ? null : (
+                        <span
+                          title="Edit"
+                          onClick={() =>
+                            setUpdateItem({
+                              id: task.id,
+                              title: task.title,
+                              status: task.status ? true : false,
+                            })
+                          }
+                        >
+                          <FontAwesomeIcon icon={faPen} />
+                        </span>
+                      )}
+
                       <span
                         title="Delete"
                         onClick={() => deleteTodoItem(task.id)}
